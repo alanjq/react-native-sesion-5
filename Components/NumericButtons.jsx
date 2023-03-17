@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import CalcButton from './CalcButton';
 
-export function NumericButtons() {
+export function NumericButtons({ onPress }) {
     const GAP = 15
 
     const flexgrid = {
@@ -12,30 +12,28 @@ export function NumericButtons() {
             gap: GAP,
         },
         column: {
-            backgroundColor: "blue",
             flexDirection: "column",
             flexGrow: 1,
             gap: GAP
         },
     }
 
+    const COLUMNS = [
+        [1, 4, 7],
+        [2, 5, 8],
+        [3, 6, 9]
+    ]
+
     return (
         <View style={flexgrid.container}>
-            <View style={flexgrid.column}>
-                <CalcButton label="1" />
-                <CalcButton label="4" />
-                <CalcButton label="7" />
-            </View>
-            <View style={flexgrid.column}>
-                <CalcButton label="2" />
-                <CalcButton label="5" />
-                <CalcButton label="8" />
-            </View>
-            <View style={flexgrid.column}>
-                <CalcButton label="3" />
-                <CalcButton label="6" />
-                <CalcButton label="9" />
-            </View>
+            {/* Renderizar los botones numéricos */}
+            {COLUMNS.map((column) =>
+                <View style={flexgrid.column}>
+                    {column.map(numericbutton =>
+                        <CalcButton key={numericbutton} label={numericbutton} onPress={onPress} />
+                    )}
+                </View>
+            )}
         </View>
     )
 }

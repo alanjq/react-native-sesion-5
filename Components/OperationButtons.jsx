@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import CalcButton from './CalcButton';
 
-function OperationButtons() {
+function OperationButtons({ onPress }) {
     const GAP = 10
 
     const flexgrid = {
@@ -20,10 +20,10 @@ function OperationButtons() {
 
     return (
         <View style={flexgrid.container}>
-            <CalcButton label="C" backgroundColor="orange" />
-            <CalcButton label="-" backgroundColor="orange" />
-            <CalcButton label="+" backgroundColor="orange" />
-            <CalcButton label="=" backgroundColor="orange" />
+            <CalcButton label="C" backgroundColor="orange" onPress={onPress} />
+            <CalcButton label="-" backgroundColor="orange" onPress={onPress} />
+            <CalcButton label="+" backgroundColor="orange" onPress={onPress} />
+            <CalcButton label="=" backgroundColor="orange" onPress={onPress} />
         </View>
     )
 }
